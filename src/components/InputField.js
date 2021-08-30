@@ -5,11 +5,11 @@ function InputField({ name, inputType, label, value, changeHandler}) {
     <>
       <label htmlFor={`${name}-field`}>{label}</label>
       <input
-        name={`${name}-field`}
+        name={name}
         id={`${name}-field`}
         type={inputType}
         value={value}
-        onChange={(e) => changeHandler(e.target.value)}
+        onChange={changeHandler}
       />
     </>
   );
