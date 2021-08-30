@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Button from './components/Button';
+import Counter from './components/Counter';
+import InputField from './components/InputField';
 import './App.css';
 
 function App() {
@@ -43,87 +46,47 @@ function App() {
       <section className="fruit-counters">
         <article>
           <h2>🍓 Aardbeien</h2>
-          <button type="button" disabled={strawberries === 0} onClick={() => setStrawberries(strawberries - 1)}>
-            -
-          </button>
-          <p>{strawberries}</p>
-          <button type="button" onClick={() => setStrawberries(strawberries + 1)}>
-            +
-          </button>
+          <Counter
+            fruitCount={strawberries}
+            setFruitCount={setStrawberries}
+          />
         </article>
         <article>
           <h2>🍌 Bananen</h2>
-          <button type="button" disabled={bananas === 0} onClick={() => setBananas(bananas - 1)}>
-            -
-          </button>
-          <p>{bananas}</p>
-          <button type="button" onClick={() => setBananas(bananas + 1)}>
-            +
-          </button>
+          <Counter
+            fruitCount={bananas}
+            setFruitCount={setBananas}
+          />
         </article>
         <article>
           <h2>🍏 Appels</h2>
-          <button type="button" disabled={apples === 0} onClick={() => setApples(apples - 1)}>
-            -
-          </button>
-          <p>{apples}</p>
-          <button type="button" onClick={() => setApples(apples + 1)}>
-            +
-          </button>
+          <Counter
+            fruitCount={apples}
+            setFruitCount={setApples}
+          />
         </article>
         <article>
           <h2>🥝 Kiwi's</h2>
-          <button type="button" disabled={kiwis === 0} onClick={() => setKiwis(kiwis - 1)}>
-            -
-          </button>
-          <p>{kiwis}</p>
-          <button type="button" onClick={() => setKiwis(kiwis + 1)}>
-            +
-          </button>
+          <Counter
+            fruitCount={kiwis}
+            setFruitCount={setKiwis}
+          />
         </article>
-        <button type="button" onClick={() => resetFruits()}>Reset</button>
+        <Button type="button" clickHandler={resetFruits}>Reset</Button>
       </section>
 
       <form onSubmit={handleSubmit}>
         <section>
-          <label htmlFor="firstname-field">Voornaam</label>
-          <input
-            name="firstname-field"
-            id="firstname-field"
-            type="text"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          />
+          <InputField name="firstname" label="Voornaam" inputType="text" value={firstname} changeHandler={setFirstname} />
         </section>
         <section>
-          <label htmlFor="lastname-field">Achternaam</label>
-          <input
-            name="lastname-field"
-            id="lastname-field"
-            type="text"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          />
+          <InputField name="lastname" label="Achternaam" inputType="text" value={lastname} changeHandler={setLastname} />
         </section>
         <section>
-          <label htmlFor="age-field">Leeftijd</label>
-          <input
-            name="age-field"
-            id="age-field"
-            type="number"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
+          <InputField name="age" label="Leeftijd" inputType="number" value={age} changeHandler={setAge} />
         </section>
         <section>
-          <label htmlFor="zipcode-field">Postcode</label>
-          <input
-            name="zipcode-field"
-            id="zipcode-field"
-            type="text"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-          />
+          <InputField name="zipcode" label="Postcode" inputType="text" value={zipcode} changeHandler={setZipcode} />
         </section>
         <section>
           <label htmlFor="delivery-field">Bezorgfrequentie</label>
@@ -181,7 +144,7 @@ function App() {
           <label htmlFor="agree-field">Ik ga akkoord met de voorwaarden</label>
         </section>
 
-        <button type="submit">Verzend</button>
+        <Button type="submit">Verzend</Button>
       </form>
     </>
   );
