@@ -34,6 +34,7 @@ function App() {
     Leeftijd: ${age}, 
     Postcode: ${zipcode}, 
     Bezorgfrequentie: ${deliveryFrequency},
+    Bezorgtijdslot: ${deliveryTimeslot},
     Opmerkingen: ${remark},
     Algemene voorwaarden: ${agreeTerms}
     `);
@@ -93,7 +94,7 @@ function App() {
         </section>
         <section>
           <select
-            name="delivery-field" id="delivery-field"
+            name="delivery" id="delivery-field"
             value={deliveryFrequency}
             onChange={(e) => toggleDeliveryFrequency(e.target.value)}
           >
@@ -106,7 +107,7 @@ function App() {
         <input
           type="radio"
           value="daytime"
-          name="timeslot-field"
+          name="timeslot"
           id="timeslot-field-daytime"
           checked={deliveryTimeslot === 'daytime'}
           onChange={(e) => toggleDeliveryTimeslot(e.target.value)}
@@ -117,7 +118,7 @@ function App() {
             value="evening"
             checked={deliveryTimeslot === 'evening'}
             onChange={(e) => toggleDeliveryTimeslot(e.target.value)}
-            name="timeslot-field"
+            name="timeslot"
             id="timeslot-field-evening"
           />
           <label htmlFor="timeslot-field-evening">'s Avonds</label>
@@ -125,7 +126,7 @@ function App() {
         <section>
           <label htmlFor="remark-field">Opmerking</label>
           <textarea
-            name="remark-field"
+            name="remark"
             id="remark-field"
             value={remark}
             onChange={(e) => setRemark(e.target.value)}
@@ -136,10 +137,10 @@ function App() {
         <section>
           <input
             type="checkbox"
-            name="agree-field"
+            name="agree"
             id="agree-field"
             value={agreeTerms}
-            onChange={() => toggleAgreeTerms(!agreeTerms)}
+            onChange={(e) => toggleAgreeTerms(e.target.checked)}
           />
           <label htmlFor="agree-field">Ik ga akkoord met de voorwaarden</label>
         </section>
